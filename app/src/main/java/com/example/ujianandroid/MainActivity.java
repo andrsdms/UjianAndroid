@@ -39,11 +39,27 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Isian masih kosong", Toast.LENGTH_SHORT).show();
                 }else{
                     String nama_lengkap = isian_nama_depan.concat(" ").concat(isian_nama_belakang);
-                        daftar_nama.clear();
+                    daftar_nama.clear();
 
-                        for (int i = 0; i < doubleisian_nama_umur; i++) {
-                            daftar_nama.add(nama_lengkap);
+                    for (int i = 0; i < doubleisian_nama_umur; i++) {
+                        String status;
+
+                        if (doubleisian_nama_umur >= 0 && doubleisian_nama_umur <= 10) {
+                            status = "Anak";
+                        } else if (doubleisian_nama_umur >= 11 && doubleisian_nama_umur <= 20) {
+                            status = "Remaja";
+                        } else if (doubleisian_nama_umur >= 21 && doubleisian_nama_umur <= 30) {
+                            status = "Dewasa";
+                        } else {
+                            status = "Tua";
                         }
+
+                        if (i % 2 == 0) {
+
+                            String nama_dengan_status = i + " " + nama_lengkap + ". Status : " + status;
+                            daftar_nama.add(nama_dengan_status);
+                        }
+                    }
 
                     edNamaDepan.setText("");
                     edNamaBelakang.setText("");
